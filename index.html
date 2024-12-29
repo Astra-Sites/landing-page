@@ -25,6 +25,9 @@
   <title>Web Development, AI Integration & SEO | Astra Softwares</title>
   <meta name="description" content="Astra Softwares delivers AI, web development, UI/UX, SEO, and payment integration services to transform your online presence with cutting-edge solutions.">  
   <link rel="canonical" href="https://astrasoft.tech/">
+  <meta name="author" content="Ismael Bett">
+  <meta name="theme-color" content="#71c55d">
+
 
 
   <!-- Open Graph / Social Media Metadata -->
@@ -80,7 +83,9 @@
         gtag('config', 'G-HHKE1L4JRZ');
       </script>
 
-
+<!-- phone number Ajax -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
 
   <!-- Favicons -->
@@ -274,6 +279,7 @@
                 <h3>AI Integration</h3>
               </a>
               <p>Transform your business processes with cutting-edge AI solutions tailored to meet your unique needs.</p>
+              <i class="bi bi-link"></i>
             </div>
           </div><!-- End Service Item -->
 
@@ -430,7 +436,7 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+          <!-- <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="pricing-tem">
               <h3 style="color: #20c997;">Basic Plan</h3>
               <div class="price"><sup>$</sup>199<span> / mo</span></div>
@@ -446,58 +452,60 @@
               </ul>
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
-          </div><!-- End Pricing Item -->
+          </div> -->
+          <!-- End Pricing Item -->
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-4 col-md-8" data-aos="zoom-in" data-aos-delay="200">
             <div class="pricing-tem">
-              <span class="featured">Featured</span>
+
               <h3 style="color: #0dcaf0;">Starter Plan</h3>
-              <div class="price"><sup>$</sup>299<span> / mo</span></div>
+              <div class="price"><sup>$</sup>299<span> /=</span></div>
               <div class="icon">
                 <i class="bi bi-send" style="color: #0dcaf0;"></i>
               </div>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>Upto 5 pages</li>
+                <li>SEO Friendly</li>
+                <li>Social Media Integration</li>
+                <li>Unique Landing Page Design</li>
+                <li class="na">Domain and Hosting</li>
               </ul>
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
           </div><!-- End Pricing Item -->
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col-lg-4 col-md-8" data-aos="zoom-in" data-aos-delay="300">
             <div class="pricing-tem">
-              <h3 style="color: #fd7e14;">Business Plan</h3>
-              <div class="price"><sup>$</sup>499<span> / mo</span></div>
+              <span class="featured">Featured</span>
+              <h3 style="color: #fd7e14;">Premium Plan</h3>
+              <div class="price"><sup>$</sup>499<span> / =</span></div>
               <div class="icon">
                 <i class="bi bi-airplane" style="color: #fd7e14;"></i>
               </div>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
+                <li>Everything in Starter Plan</li>
+                <li>Delivery Solutions</li>
+                <li>Payment Integration</li>
+                <li>Google Anarlytics</li>
+                <li>Live Chat</li>
               </ul>
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
           </div><!-- End Pricing Item -->
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+          <div class="col-lg-4 col-md-8" data-aos="zoom-in" data-aos-delay="400">
             <div class="pricing-tem">
               <h3 style="color: #0d6efd;">Ultimate Plan</h3>
-              <div class="price"><sup>$</sup>699<span> / mo</span></div>
+              <div class="price"><sup>$</sup>699<span> / =</span></div>
               <div class="icon">
                 <i class="bi bi-rocket" style="color: #0d6efd;"></i>
               </div>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
+                <li>Everything in Premium Plan</li>
+                <li>CRM Integration</li>
+                <li>Database Population</li>
+                <li>Unlimited Sub-pages</li>
+                <li>Bespoke Design</li>
               </ul>
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
@@ -637,6 +645,10 @@
                 </div>
 
                 <div class="col-md-12">
+                  <input id="phone" type="tel" class="form-control" name="phone" />
+                </div>
+
+                <div class="col-md-12">
                   <input type="text" class="form-control" name="Subject" placeholder="Subject" required="">
                 </div>
 
@@ -729,6 +741,30 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+
+
+function getIp(callback) {
+  fetch('https://ipinfo.io/json?token=66e2f39b20a2bd', { headers: { 'Accept': 'application/json' } })
+    .then((resp) => resp.json())
+    .catch(() => {
+      return { country: 'us' }; // Default to 'us' on error
+    })
+    .then((resp) => callback(resp.country));
+}
+
+const phoneInputField = document.querySelector("#phone");
+
+getIp((countryCode) => {
+  const phoneInput = window.intlTelInput(phoneInputField, {
+    initialCountry: countryCode.toLowerCase(),
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+  });
+});
+
+      
+  </script>
 
 </body>
 

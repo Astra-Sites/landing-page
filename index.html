@@ -84,8 +84,8 @@
       </script>
 
 <!-- phone number Ajax -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
 
   <!-- Favicons -->
@@ -645,7 +645,7 @@
                 </div>
 
                 <div class="col-md-12">
-                  <input  type="text" class="form-control" name="Phone number"  placeholder="+254**" required=""/>
+                  <input  type="tel" id="phone" class="form-control" name="Phone number"   required=""/>
                 </div>
 
                 <div class="col-md-12">
@@ -742,29 +742,52 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <!-- <script>
+  
+  
+  <!-- Phone number operations -->
 
-
+  <script>
+// Function to fetch IP-based country code
 function getIp(callback) {
-  fetch('https://ipinfo.io/json?token=66e2f39b20a2bd', { headers: { 'Accept': 'application/json' } })
-    .then((resp) => resp.json())
-    .catch(() => {
-      return { country: 'us' }; // Default to 'us' on error
+  fetch("https://ipinfo.io/json?token=66e2f39b20a2bd", { headers: { Accept: "application/json" } })
+    .then((response) => {
+      if (!response.ok) throw new Error("Failed to fetch IP info");
+      return response.json();
     })
-    .then((resp) => callback(resp.country));
+    .then((data) => callback(data.country || "US")) // Default to 'US' if no country is returned
+    .catch(() => callback("US")); // Fallback to 'US' on error
 }
 
+// Target phone input field
 const phoneInputField = document.querySelector("#phone");
 
+// Fetch IP-based country code and initialize intl-tel-input
 getIp((countryCode) => {
   const phoneInput = window.intlTelInput(phoneInputField, {
     initialCountry: countryCode.toLowerCase(),
     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
   });
+
+  // Update the input value with the full phone number on form submission
+  const form = phoneInputField.closest("form"); // Get the closest form
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      // Prevent form submission if the phone number is invalid
+      if (!phoneInput.isValidNumber()) {
+        e.preventDefault();
+        alert("Please enter a valid phone number.");
+        return;
+      }
+
+      // Append the full phone number (with country code) to the input field
+      phoneInputField.value = phoneInput.getNumber(); // Get the full phone number in E.164 format
+    });
+  }
 });
 
+
       
-  </script> -->
+  </script>
 
 </body>
 

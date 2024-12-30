@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta name="keywords" content="Astra Softwares, AI integration, website redesign, website development, 
+  <meta name="keywords" content="Astra Softwares, software companies nairobi, AI Integration, software development company, website development, 
                                 UI/UX design, SEO optimization, payment integration, online programming courses, 
-                                Portfolio Ready, AI tutor, compliance management, e-learning platforms, web development,
-                                 full-stack developer, Kenya web solutions, Best software company kenya, Best Website Developers">
+                                Portfolio Ready, kenya software companies, software companies in kenya, e-learning platforms, software company in kenya,
+                                software development companies in kenya, Kenya web solutions, best software development company in kenya, Best Website Developers">
 
 
 
@@ -478,7 +478,7 @@
             <div class="pricing-tem">
               <span class="featured">Featured</span>
               <h3 style="color: #fd7e14;">Premium Plan</h3>
-              <div class="price"><sup>$</sup>499<span> / =</span></div>
+              <div class="price"><sup>$</sup>749<span> / =</span></div>
               <div class="icon">
                 <i class="bi bi-airplane" style="color: #fd7e14;"></i>
               </div>
@@ -496,7 +496,7 @@
           <div class="col-lg-4 col-md-8" data-aos="zoom-in" data-aos-delay="400">
             <div class="pricing-tem">
               <h3 style="color: #0d6efd;">Ultimate Plan</h3>
-              <div class="price"><sup>$</sup>699<span> / =</span></div>
+              <div class="price"><sup>$</sup>1049<span> / =</span></div>
               <div class="icon">
                 <i class="bi bi-rocket" style="color: #0d6efd;"></i>
               </div>
@@ -746,47 +746,44 @@
   
   <!-- Phone number operations -->
 
-  <script>
-// Function to fetch IP-based country code
-function getIp(callback) {
-  fetch("https://ipinfo.io/json?token=66e2f39b20a2bd", { headers: { Accept: "application/json" } })
-    .then((response) => {
-      if (!response.ok) throw new Error("Failed to fetch IP info");
-      return response.json();
-    })
-    .then((data) => callback(data.country || "US")) // Default to 'US' if no country is returned
-    .catch(() => callback("US")); // Fallback to 'US' on error
-}
-
-// Target phone input field
-const phoneInputField = document.querySelector("#phone");
-
-// Fetch IP-based country code and initialize intl-tel-input
-getIp((countryCode) => {
-  const phoneInput = window.intlTelInput(phoneInputField, {
-    initialCountry: countryCode.toLowerCase(),
-    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-  });
-
-  // Update the input value with the full phone number on form submission
-  const form = phoneInputField.closest("form"); // Get the closest form
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      // Prevent form submission if the phone number is invalid
-      if (!phoneInput.isValidNumber()) {
-        e.preventDefault();
-        alert("Please enter a valid phone number.");
-        return;
+  <script defer>
+      // Function to fetch IP-based country code
+      function getIp(callback) {
+        fetch("https://ipinfo.io/json?token=66e2f39b20a2bd", { headers: { Accept: "application/json" } })
+          .then((response) => {
+            if (!response.ok) throw new Error("Failed to fetch IP info");
+            return response.json();
+          })
+          .then((data) => callback(data.country || "US")) // Default to 'US' if no country is returned
+          .catch(() => callback("US")); // Fallback to 'US' on error
       }
 
-      // Append the full phone number (with country code) to the input field
-      phoneInputField.value = phoneInput.getNumber(); // Get the full phone number in E.164 format
-    });
-  }
-});
+      // Target phone input field
+      const phoneInputField = document.querySelector("#phone");
 
+      // Fetch IP-based country code and initialize intl-tel-input
+      getIp((countryCode) => {
+        const phoneInput = window.intlTelInput(phoneInputField, {
+          initialCountry: countryCode.toLowerCase(),
+          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
 
-      
+        // Update the input value with the full phone number on form submission
+        const form = phoneInputField.closest("form"); // Get the closest form
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            // Prevent form submission if the phone number is invalid
+            if (!phoneInput.isValidNumber()) {
+              e.preventDefault();
+              alert("Please enter a valid phone number.");
+              return;
+            }
+
+            // Append the full phone number (with country code) to the input field
+            phoneInputField.value = phoneInput.getNumber(); // Get the full phone number in E.164 format
+          });
+        }
+      });
   </script>
 
 </body>
